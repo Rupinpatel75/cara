@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Live Camera with Clothes Overlay in A-Frame</title>
+    <meta name="description" content="Live Camera Feed with Clothes Overlay">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Camera Setup -->
+      <a-entity camera position="0 1.6 0"></a-entity>
+
+      <!-- Box for VR Testing -->
+      
+
+      <!-- Live Video Setup -->
+      <a-assets>
+        <video id="liveVideo" autoplay playsinline></video>
+        <!-- Update paths to make sure these are correct -->
+        <img id="shirt1" src="f1_1.png" crossorigin="anonymous">
+       
+      </a-assets>
+
+      <!-- Display the live video feed -->
+      <a-video src="#liveVideo" width="4" height="3" position="0 1.6 -3"></a-video>
+
+      <!-- Display the selected clothes overlay -->
+      <a-image id="clothesOverlay" src="#shirt1" position="0 1.4 -2.8" width="2.5" height="2.5"></a-image>
+
+      <!-- Sky for Better Visibility -->
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+
+    <!-- Add controls for clothes selection -->
+    <select id="clothesSelect">
+      <option value="shirt1">Shirt 1</option>
+     
+    </select>
+    <button onclick="changeClothes()">Try On Selected Clothes</button>
+
+    <script>
+      // Get access to the camera
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function(stream) {
+          var video = document.getElementById('liveVideo');
+          video.srcObject = stream;
+        })
+        .catch(function(err) {
+          console.error("Error accessing camera: " + err);
+        });
+
+      // Function to change the clothes overlay
+      function changeClothes() {
+        const selectedClothes = document.getElementById('clothesSelect').value;
+        const clothesOverlay = document.getElementById('clothesOverlay');
+        clothesOverlay.setAttribute('src', '#' + selectedClothes);
+      }
+    </script>
+  </body>
+</html>

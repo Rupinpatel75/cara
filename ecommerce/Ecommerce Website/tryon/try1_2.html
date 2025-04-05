@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Camera with Clothes Overlay in A-Frame</title>
+    <meta name="description" content="Live Camera Feed with Clothes Overlay">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script> <!-- Add this line -->
+</head>
+<body>
+    <a-scene>
+        <!-- Camera Setup -->
+        <a-entity camera position="0 1.6 0"></a-entity>
+
+        <!-- Live Video Setup -->
+        <a-assets>
+            <img id="shirt1" src="f1_1.png" crossorigin="anonymous">
+            <video id="liveVideo" autoplay playsinline crossorigin="anonymous"></video>
+        </a-assets>
+
+        <!-- Display the live video feed -->
+        <a-video src="#liveVideo" width="4" height="3" position="0 1.6 -3"></a-video>
+
+        <!-- Display the selected clothes overlay -->
+        <a-image id="clothesOverlay" src="#shirt1" position="0 1.4 -2.8" width="2.5" height="2.5"></a-image>
+
+        <!-- Sky for Better Visibility -->
+        <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+
+    <!-- Add controls for clothes selection -->
+    <select id="clothesSelect">
+        <option value="shirt1">Shirt 1</option>
+    </select>
+    <button onclick="changeClothes()">Try On Selected Clothes</button>
+
+    <script>
+        // Simple Camera Access Using getUserMedia
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+                var video = document.getElementById('liveVideo');
+                video.srcObject = stream;
+                video.play();
+            })
+            .catch(function(err) {
+                console.error("Error accessing camera: " + err);
+            });
+
+        // Function to change the clothes overlay
+        function changeClothes() {
+            const selectedClothes = document.getElementById('clothesSelect').value;
+            const clothesOverlay = document.getElementById('clothesOverlay');
+            clothesOverlay.setAttribute('src', '#' + selectedClothes);
+        }
+
+        // MediaPipe Pose Detection Setup
+        const video = document.getElementById('liveVideo');
+        const pose = new Pose({
+            locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`
+        });
+
+        pose.setOptions({
+            modelComplexity: 1,
+            smoothLandmarks: true,
+            minDetectionConfidence: 0.5,
+            minTrackingConfidence: 0.5
+        });
+
+        pose.onResults((results) => {
+            // Handle the pose detection results here
+            console.log(results.poseLandmarks);
+            // Adjust the overlay based on the landmarks if needed
+        });
+
+        // Start Pose detection when the video is ready
+        video.addEventListener('loadeddata', () => {
+            console.log('Video loaded and ready to play');
+
+            const camera = new Camera(video, {
+                onFrame: async () => {
+                    await pose.send({ image: video });
+                },
+                width: 640,
+                height: 480
+            });
+            camera.start();
+        });
+
+    </script>
+</body>
+</html>

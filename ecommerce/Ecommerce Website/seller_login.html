@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('Seller_login_img.jpg') no-repeat center center fixed;
+            background-size: cover;
+
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Header for top-left logo */
+        header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .logo {
+            width: 120px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .register-link a {
+            color: #007BFF;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header for Logo in Top-Left -->
+<header>
+    <img src="logo.png" class="logo" alt="Cara Logo">
+</header>
+
+<!-- Main Login Container -->
+<div class="container">
+    <h2>Seller Login</h2>
+
+    <!-- Login Form -->
+    <form id="loginForm">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <!-- Redirect to Registration Page if Not Registered -->
+    <div class="register-link">
+        <p>Don't have an account? <a href="seller_register.html">Register here</a></p>
+    </div>
+</div>
+
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function(event){
+        event.preventDefault();
+        // Perform validation or authentication here if needed
+        
+        // Redirect to seller dashboard
+        window.location.href = "seller_dashboard.html";
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header for Logo */
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 120px;
+        }
+
+        /* Container for the dashboard */
+        .dashboard-container {
+            width: 90%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Table for product stock */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Button styles */
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Form to add new products */
+        .add-product-form {
+            margin-top: 40px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .add-product-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .add-product-form input, .add-product-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .add-product-form textarea {
+            resize: none;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo.png" class="logo" alt="Cara Logo">
+    <h1>Seller Dashboard</h1>
+</header>
+
+<div class="dashboard-container">
+
+    <!-- Section: Current Product Stock -->
+    <h2>Current Stock of Products</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Example data -->
+            <tr>
+                <td>Product 1</td>
+                <td>Category A</td>
+                <td>$25.00</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>Product 2</td>
+                <td>Category B</td>
+                <td>$15.00</td>
+                <td>75</td>
+            </tr>
+            <!-- More product data should be dynamically added here -->
+        </tbody>
+    </table>
+
+    <!-- Section: Add New Product -->
+    <div class="add-product-form">
+        <h2>Add New Product</h2>
+        <form id="addProductForm">
+            <label for="productName">Product Name</label>
+            <input type="text" id="productName" name="productName" required>
+
+            <label for="category">Category</label>
+            <input type="text" id="category" name="category" required>
+
+            <label for="price">Price</label>
+            <input type="number" id="price" name="price" required>
+
+            <label for="stockQuantity">Stock Quantity</label>
+            <input type="number" id="stockQuantity" name="stockQuantity" required>
+
+            <button type="submit">Add Product</button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    document.getElementById('addProductForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Logic for adding the product can be added here (e.g., saving the data)
+        alert('Product added successfully!');
+        // Optionally, redirect or update the product stock table dynamically
+    });
+</script>
+
+</body>
+</html>

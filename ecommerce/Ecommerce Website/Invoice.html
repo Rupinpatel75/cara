@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice - Cara</title>
+    <link rel="stylesheet" href="Invoice.css">
+</head>
+<body>
+    <section id="invoice">
+        <div class="company-details">
+            <div class="left">
+                <img src="logo.png" alt="Cara Logo" class="company-logo">
+            </div>
+            <div class="right">
+                <p><strong>Address:</strong>D-33 Shiv Darshan society, behind laxmi Narayan temple, Manjalpur, Vadodara  390011</p>
+                <p><strong>Phone:</strong>+919313448196</p>
+            </div>
+        </div>
+        
+        <h2>Invoice</h2>
+        
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Printed Classic Casual Shirt</td>
+                    <td>₹790</td>
+                    <td>1</td>
+                    <td>₹790</td>
+                </tr>
+                <tr>
+                    <td>Printed Classic Casual Shirt</td>
+                    <td>₹680</td>
+                    <td>1</td>
+                    <td>₹680</td>
+                </tr>
+                <tr>
+                    <td>Printed Classic Casual Shirt</td>
+                    <td>₹590</td>
+                    <td>1</td>
+                    <td>₹590</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="coupon-section">
+            <label for="coupon">Apply Coupon:</label>
+            <input type="text" id="coupon" placeholder="Enter Your Coupon">
+            <button>Apply</button>
+        </div>
+        
+        <div class="cart-totals">
+            <table>
+                <tr>
+                    <td>Cart Subtotal</td>
+                    <td>₹2060</td>
+                </tr>
+                <tr>
+                    <td>Shipping</td>
+                    <td>Free</td>
+                </tr>
+                <tr>
+                    <td>GST (18%)</td>
+                    <td>₹370.08</td>
+                </tr>
+                <tr>
+                    <td>Delivery Charges</td>
+                    <td>₹5</td>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <th>₹2480.08</th>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="checkout-button">
+            <button>Proceed to Checkout</button>
+        </div>
+    </section>
+</body>
+</html>

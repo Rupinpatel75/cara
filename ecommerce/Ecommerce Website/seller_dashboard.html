@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard</title>
+    <link rel="stylesheet" href="seller_dashboard.css">
+</head>
+<body>
+    <section id="seller-dashboard">
+        <h2>Seller Dashboard</h2>
+        <form id="addProductForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="productName">Product Name</label>
+                <input type="text" id="productName" name="productName" required>
+            </div>
+            <div class="form-group">
+                <label for="productImage">Product Image</label>
+                <input type="file" id="productImage" name="productImage" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <label for="productPrice">Price</label>
+                <input type="number" id="productPrice" name="productPrice" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label>Available Sizes</label>
+                <div class="size-options">
+                    <label><input type="checkbox" name="productSize" value="XXL"> XXL</label>
+                    <label><input type="checkbox" name="productSize" value="XL"> XL</label>
+                    <label><input type="checkbox" name="productSize" value="L"> L</label>
+                    <label><input type="checkbox" name="productSize" value="M"> M</label>
+                    <label><input type="checkbox" name="productSize" value="S"> S</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="customRemarks">Custom Remarks</label>
+                <textarea id="customRemarks" name="customRemarks" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="productDescription">Product Description</label>
+                <textarea id="productDescription" name="productDescription" rows="6" required></textarea>
+            </div>
+            <button type="submit">Add Product</button>
+        </form>
+    </section>
+
+    <script src="seller_dashboard.js"></script>
+</body>
+</html>

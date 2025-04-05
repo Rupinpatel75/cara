@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Live Camera in A-Frame</title>
+    <meta name="description" content="Live Camera Feed">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Camera Setup -->
+      <a-entity camera position="0 1.6 0"></a-entity>
+
+      <!-- Box for VR Testing -->
+      <a-box position="0 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+
+      <!-- Live Video Setup -->
+      <a-assets>
+        <video id="liveVideo" autoplay playsinline></video>
+      </a-assets>
+      <a-video src="#liveVideo" width="16" height="9" position="0 5 -10"></a-video>
+
+      <!-- Sky for Better Visibility -->
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+
+    <script>
+      // Get access to the camera
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function(stream) {
+          var video = document.getElementById('liveVideo');
+          video.srcObject = stream;
+        })
+        .catch(function(err) {
+          console.error("Error accessing camera: " + err);
+        });
+    </script>
+  </body>
+</html>
+ 
